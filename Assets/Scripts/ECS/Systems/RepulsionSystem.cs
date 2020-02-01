@@ -35,6 +35,8 @@ public class RepulsionSystem : JobComponentSystem
                 if(math.distancesq(repulsionPosition, trans.Value) <= 0.01f) continue;
 
                 var diff = trans.Value - repulsionPosition;
+                diff.y = 0;
+                
                 var lengthSq = math.lengthsq(diff);
                 if (lengthSq > minDistance * minDistance) continue;
                 

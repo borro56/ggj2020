@@ -11,7 +11,7 @@ namespace ECS.Systems
     {
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
-            var speed = DamagerVelocityGlobal.Instance.speed;
+            var speed = DamagerPropertiesGlobal.Instance.speed;
             var deltaTime = Time.DeltaTime;
             return Entities
                 .WithAll<Damager>()

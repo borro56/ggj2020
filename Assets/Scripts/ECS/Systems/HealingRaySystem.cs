@@ -32,8 +32,8 @@ public class HealingRaySystem : JobComponentSystem
             for (var i = 0; i < targets.Length; i++)
             {
                 var targetBound = targets[i].Value;
-
                 var sqdist = targetBound.DistanceSq(pos);
+
                 if (sqdist > healDistance * healDistance)
                 {
                     scale.Value = new float3(0, 0, 0);

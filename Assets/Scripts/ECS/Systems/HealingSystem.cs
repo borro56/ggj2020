@@ -29,6 +29,7 @@ public class HealingSystem : JobComponentSystem
         var healerL2W = targetEntities.ToComponentDataArray<LocalToWorld>(Allocator.TempJob);
 
         var baseJob = Entities
+            .WithAll<Healeable>()
             .WithDeallocateOnJobCompletion(healerPosition)
             .WithDeallocateOnJobCompletion(healerL2W)
             .ForEach((Entity entity, in Life life, in WorldRenderBounds bounds) =>

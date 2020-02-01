@@ -11,7 +11,7 @@ public class HealingRaySystem : JobComponentSystem
     
     protected override void OnCreate()
     {
-        targetEntities = GetEntityQuery(typeof(Life), ComponentType.ReadOnly<WorldRenderBounds>());
+        targetEntities = GetEntityQuery(typeof(Life), ComponentType.ReadOnly<WorldRenderBounds>(), ComponentType.ReadOnly<Healeable>());
         base.OnCreate();
     }
     

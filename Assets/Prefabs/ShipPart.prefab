@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3710053180442623864}
   - component: {fileID: 3710053180442623867}
   - component: {fileID: 3710053180442623863}
+  - component: {fileID: 532832266}
   m_Layer: 0
   m_Name: ShipPart
   m_TagString: Untagged
@@ -106,5 +107,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebad3a72bf21414ea36ca01ffe5ccc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 1
-  maxAmount: 1000000
+  amount: 100
+  maxAmount: 2000
+--- !u!114 &532832266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710053180442623866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2633f369e895441ca84624c4fd3c5edb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

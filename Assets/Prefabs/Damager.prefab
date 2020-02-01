@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 6335629237573622744}
   - component: {fileID: 3508149916314951033}
   - component: {fileID: 8299547451640735476}
+  - component: {fileID: 5497991362100241119}
+  - component: {fileID: -2304399013799574360}
   m_Layer: 0
   m_Name: Damager
   m_TagString: Untagged
@@ -246,3 +248,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2784c110a40429998a9b022eae4a579, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5497991362100241119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255605702937034655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a4da7df248439da476d71f18fe9b5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+--- !u!114 &-2304399013799574360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255605702937034655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebad3a72bf21414ea36ca01ffe5ccc94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 10
+  maxAmount: 10

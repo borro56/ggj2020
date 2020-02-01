@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1116412096541003836}
   - component: {fileID: 8147963705239042928}
-  - component: {fileID: 5950427861888648558}
   m_Layer: 0
   m_Name: DamagersSpawner
   m_TagString: Untagged
@@ -47,16 +46,3 @@ MonoBehaviour:
   radius: 96.2
   prefabReference: {fileID: 1255605702937034655, guid: 14100913d21f74842a2827f24f638ac8,
     type: 3}
---- !u!114 &5950427861888648558
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8890659909010685724}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea7d7495833204790ba1d3a8755397f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ConversionMode: 0

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Timers;
 using ECS.Components;
 using Unity.Entities;
+using Unity.Mathematics;
+using Unity.Transforms;
 using UnityEngine;
 
 #if UNITY_EDITOR
@@ -23,6 +25,7 @@ namespace MonoBehaviours
 
         public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
+            var position = transform.position;
             var rotatingCubePrefabEntity = conversionSystem.GetPrimaryEntity(prefabReference);
 
             var spawnData = new DamagerSpawner
@@ -32,6 +35,10 @@ namespace MonoBehaviours
             };
 
             dstManager.AddComponentData(entity, spawnData);
+            dstManager.AddComponentData(entity, new Translation()
+            {
+                Value = new float3(position.x, position.y, position.z)
+            });
 
         }
     }

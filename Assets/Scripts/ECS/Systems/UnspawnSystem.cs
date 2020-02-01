@@ -30,6 +30,7 @@ namespace ECS.Systems
                     }
                 }).Schedule(inputDeps);
             buffer.AddJobHandleForProducer(job);
+            
             return job;
         }
     }

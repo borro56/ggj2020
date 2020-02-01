@@ -292,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730989248}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -13.1, y: 56.49, z: -17.24}
+  m_LocalPosition: {x: -2.5, y: 56.49, z: -0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -419,15 +419,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a335734b1572644a6a5d09d87adc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _SceneAsset: {fileID: 102900000, guid: f4696decac99b0646a149881804deaef, type: 3}
+  _SceneAsset: {fileID: 102900000, guid: 886cdb6b73c834e19b3c24c6d65451ee, type: 3}
   _HierarchyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   AutoLoadScene: 1
   _SceneGUID:
     Value:
-      x: 3470169679
-      y: 1175165386
-      z: 411648422
-      w: 4272870408
+      x: 3065890440
+      y: 507743287
+      z: 1816314809
+      w: 3994371437
 --- !u!4 &1209945517
 Transform:
   m_ObjectHideFlags: 0
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b225e3a42b74f1682d32a45fb48d6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagersOverTime: 0.5
+  DamagersOverTime: 0.05
 --- !u!114 &2108882751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,8 +558,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc48111bc14555974ebece235cd8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.25
   unspawnTime: 5
+  damage: 25
+  damageDistance: 10
 --- !u!1001 &5950427861888648556
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -570,7 +572,7 @@ PrefabInstance:
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.2
+      value: -0.4
       objectReference: {fileID: 0}
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
@@ -580,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -17.2
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
@@ -621,6 +623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8147963705239042928, guid: 5cf79795cc8c14f4da413f604abd9887,
+        type: 3}
+      propertyPath: radius
+      value: 50.2
       objectReference: {fileID: 0}
     - target: {fileID: 8890659909010685724, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}

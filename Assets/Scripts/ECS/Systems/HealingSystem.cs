@@ -1,3 +1,4 @@
+using ECS.Systems;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
@@ -5,6 +6,8 @@ using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
 
+
+[UpdateBefore(typeof(DamageSystem))]
 public class HealingSystem : JobComponentSystem
 {
     EntityQuery targetEntities;
@@ -14,7 +17,6 @@ public class HealingSystem : JobComponentSystem
     {
         buffer = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
         targetEntities = GetEntityQuery(ComponentType.ReadOnly<Healer>(), ComponentType.ReadOnly<LocalToWorld>(),  ComponentType.ReadOnly<Translation>());
-        base.OnCreate();
     }
     
     protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -34,6 +36,8 @@ public class HealingSystem : JobComponentSystem
             .WithDeallocateOnJobCompletion(healerL2W)
             .ForEach((Entity entity, in Life life, in WorldRenderBounds bounds) =>
             {
+                if (life.amount < life.maxAmount) return;
+                
                 int heals = 0;
                 for (var i = 0; i < healerPosition.Length; i++)
                 {
@@ -45,10 +49,13 @@ public class HealingSystem : JobComponentSystem
                         heals++;
                     }
                 }
-                
-                var currentHealth = math.min(life.amount + healAmmount * deltaTime * heals, life.maxAmount);
-                commandBuffer.SetComponent(0, entity, new Life {amount = currentHealth, maxAmount = life.maxAmount});
 
+                if (heals > 0)
+                {
+                    var currentHealth = math.min(life.amount + healAmmount * deltaTime * heals, life.maxAmount);
+                    commandBuffer.SetComponent(0, entity, new Life {amount = currentHealth, maxAmount = life.maxAmount});
+                }
+                
             }).Schedule(inputDeps);
         buffer.AddJobHandleForProducer(baseJob);
         return baseJob;

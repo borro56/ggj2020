@@ -305,10 +305,20 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: rate
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: m_Name
       value: Cannon (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3beb9623008c977499410d6859360770, type: 3}
@@ -483,10 +493,20 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: rate
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: m_Name
       value: Cannon (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3beb9623008c977499410d6859360770, type: 3}
@@ -567,10 +587,20 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 6.9234
       objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: rate
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: m_Name
       value: Cannon (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3beb9623008c977499410d6859360770, type: 3}
@@ -676,7 +706,7 @@ Transform:
   m_LocalScale: {x: 349.97, y: 1, z: 349.97}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &595206239 stripped
 Transform:
@@ -707,6 +737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DroneSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4818025792591942644, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4818025792591942646, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1,
         type: 3}
@@ -1289,10 +1324,20 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: rate
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: m_Name
       value: Cannon (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3beb9623008c977499410d6859360770, type: 3}
@@ -1353,7 +1398,7 @@ PrefabInstance:
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
@@ -1379,6 +1424,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DamagersSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8890659909010685724, guid: 5cf79795cc8c14f4da413f604abd9887,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5cf79795cc8c14f4da413f604abd9887, type: 3}
@@ -1464,10 +1514,20 @@ PrefabInstance:
       propertyPath: m_CastShadows
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: rate
+      value: 0.025
+      objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: m_Name
       value: Cannon (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3beb9623008c977499410d6859360770, type: 3}
@@ -1552,6 +1612,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CastShadows
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
+        type: 3}
+      propertyPath: rate
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,
         type: 3}

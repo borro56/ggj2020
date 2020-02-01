@@ -1,4 +1,7 @@
 ﻿using Unity.Entities;
+using Unity.Mathematics;
 
-[GenerateAuthoringComponent]
-public class LookAtDamager : IComponentData { }
+public struct LookAtDamager : IComponentData
+{
+    public quaternion initialRotation;
+}

@@ -23,7 +23,7 @@ public class AttractorSystem : JobComponentSystem
         
         Debug.DrawRay(mousePos3D, Vector3.forward);
 
-        return Entities.WithAll<AttractorTag>().ForEach((ref PhysicsVelocity vel, in Translation trans) =>
+        return Entities.WithAll<Attractor>().ForEach((ref PhysicsVelocity vel, in Translation trans) =>
         {
             var diff = mousePos3D - trans.Value;
             var lengthSq = math.lengthsq(diff);

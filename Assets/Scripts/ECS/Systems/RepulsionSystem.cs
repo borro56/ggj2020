@@ -1,5 +1,4 @@
-﻿using Unity.Burst;
-using Unity.Collections;
+﻿using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -12,7 +11,8 @@ public class RepulsionSystem : JobComponentSystem
     
     protected override void OnCreate()
     {
-        targetEntities = GetEntityQuery(ComponentType.ReadOnly<RepulsionTag>(), ComponentType.ReadOnly<Translation>());
+        //TODO: Replace the query with a cache of positions
+        targetEntities = GetEntityQuery(ComponentType.ReadOnly<Repulsion>(), ComponentType.ReadOnly<Translation>());
         base.OnCreate();
     }
 
@@ -25,7 +25,7 @@ public class RepulsionSystem : JobComponentSystem
 
         return Entities
             .WithDeallocateOnJobCompletion(repulsionPositions)
-            .WithAll<RepulsionTag>()
+            .WithAll<Repulsion>()
             .ForEach((ref PhysicsVelocity vel, in Translation trans) =>
         {
             for (var i = 0; i < repulsionPositions.Length; i++)

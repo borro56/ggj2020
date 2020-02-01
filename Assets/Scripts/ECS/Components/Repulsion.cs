@@ -1,4 +1,4 @@
 using Unity.Entities;
 
 [GenerateAuthoringComponent]
-public struct RepulsionTag : IComponentData { }
+public struct Repulsion : IComponentData { }

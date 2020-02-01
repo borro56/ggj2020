@@ -29,7 +29,6 @@ namespace ECS.Systems
         {
             
             var damage = DamagerPropertiesGlobal.Instance.damage;
-            var damageDistance = DamagerPropertiesGlobal.Instance.damageDistance;
             var commandBuffer = _buffer.CreateCommandBuffer().ToConcurrent();
             var dangerEntities = _dangerEntities.ToEntityArray(Allocator.TempJob);
             var dangerPositions = _dangerEntities.ToComponentDataArray<Translation>(Allocator.TempJob);
@@ -47,14 +46,7 @@ namespace ECS.Systems
                         if(i < dangerTeam.Length && dangerTeam[i].id == team.id) continue;
 
                         var position = dangerPositions[i].Value;
-                        var flattenCenter = bounds.Value.Center;
-                        
-                        flattenCenter.y = 0;
-                        position.y = 0;
-                        
-                        var sqdist = math.distancesq(position, flattenCenter);
-
-                        if (sqdist < damageDistance)
+                        if (bounds.Value.Contains(position))
                         {
                             accumulatedDamage += damage;
                             commandBuffer.DestroyEntity(0, dangerEntities[i]);

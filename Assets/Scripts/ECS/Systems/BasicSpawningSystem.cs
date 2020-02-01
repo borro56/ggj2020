@@ -19,7 +19,7 @@ public class BasicSpawningSystem : JobComponentSystem
         var time = (float)Time.ElapsedTime;
         
         var baseJob = Entities
-            .ForEach((ref BasicSpawner spawner, in Translation translation) =>
+            .ForEach((ref BasicSpawner spawner, in Translation translation, in Rotation rot) =>
             {
                 var delta = time - spawner.lastSpawn;
                 if(delta < spawner.rate) return;
@@ -31,6 +31,7 @@ public class BasicSpawningSystem : JobComponentSystem
                 
                 var instance = commandBuffer.Instantiate(0, spawner.prefab);
                 commandBuffer.SetComponent(0, instance, new Translation {Value = spawnPosition});
+                commandBuffer.SetComponent(0, instance, rot);
             }).Schedule(inputDeps);
         buffer.AddJobHandleForProducer(baseJob);
         return baseJob;

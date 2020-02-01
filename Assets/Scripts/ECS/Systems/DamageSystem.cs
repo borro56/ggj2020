@@ -4,12 +4,13 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
+using Unity.Physics.Systems;
 using Unity.Rendering;
 using Unity.Transforms;
 
 namespace ECS.Systems
 {
-    [UpdateAfter(typeof(HealingSystem))]
+    [UpdateBefore(typeof(BuildPhysicsWorld))]
     public class DamageSystem : JobComponentSystem
     {
         private EntityQuery _dangerEntities;
@@ -19,9 +20,9 @@ namespace ECS.Systems
         {
             _buffer = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
             _dangerEntities = GetEntityQuery(
-                ComponentType.ReadOnly<Damager>()
-                , ComponentType.ReadOnly<Translation>()
-                , ComponentType.ReadOnly<LocalToWorld>());
+                ComponentType.ReadOnly<Damager>(),
+                ComponentType.ReadOnly<Translation>(),
+                ComponentType.ReadOnly<Team>());
         }
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -32,25 +33,26 @@ namespace ECS.Systems
             var commandBuffer = _buffer.CreateCommandBuffer().ToConcurrent();
             var dangerEntities = _dangerEntities.ToEntityArray(Allocator.TempJob);
             var dangerPositions = _dangerEntities.ToComponentDataArray<Translation>(Allocator.TempJob);
-            var dangerL2W = _dangerEntities.ToComponentDataArray<Translation>(Allocator.TempJob);
+            var dangerTeam = _dangerEntities.ToComponentDataArray<Team>(Allocator.TempJob);
             
             var job = Entities
                 .WithDeallocateOnJobCompletion(dangerEntities)
                 .WithDeallocateOnJobCompletion(dangerPositions)
-                .WithDeallocateOnJobCompletion(dangerL2W)
-                .ForEach((Entity e, ref Life life, in WorldRenderBounds bounds) =>
+                .WithDeallocateOnJobCompletion(dangerTeam)
+                .ForEach((Entity e, ref Life life, in WorldRenderBounds bounds, in Team team) =>
                 {
                     float accumulatedDamage = 0;
                     for (var i = 0; i < dangerPositions.Length; i++)
                     {
-                        var position = dangerPositions[i];
-                        var pos = math.mul(new float4(position.Value, 1), dangerL2W[i].Value).xyz;
+                        if(i < dangerTeam.Length && dangerTeam[i].id == team.id) continue;
+
+                        var position = dangerPositions[i].Value;
                         var flattenCenter = bounds.Value.Center;
                         
                         flattenCenter.y = 0;
-                        pos.y = 0;
+                        position.y = 0;
                         
-                        var sqdist = math.distancesq(pos, flattenCenter);
+                        var sqdist = math.distancesq(position, flattenCenter);
 
                         if (sqdist < damageDistance)
                         {

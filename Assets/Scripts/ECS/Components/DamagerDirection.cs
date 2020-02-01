@@ -3,6 +3,7 @@ using Unity.Mathematics;
 
 namespace ECS.Components
 {
+    //TODO: Replace with PhysicsVelocity
     [GenerateAuthoringComponent]
     public struct DamagerDirection : IComponentData
     {

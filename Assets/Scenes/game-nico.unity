@@ -292,7 +292,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730989248}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -13.1, y: 56.49, z: -17.24}
+  m_LocalPosition: {x: 0, y: 77.02, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -455,6 +455,8 @@ GameObject:
   - component: {fileID: 2108882747}
   - component: {fileID: 2108882749}
   - component: {fileID: 2108882748}
+  - component: {fileID: 2108882750}
+  - component: {fileID: 2108882751}
   m_Layer: 0
   m_Name: GlobalSettings
   m_TagString: Untagged
@@ -503,7 +505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Distance: 1.5
-  Force: 50
+  Force: 5
 --- !u!114 &2108882748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -531,3 +533,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Amount: 10
   Distance: 10
+--- !u!114 &2108882750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108882744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59bc48111bc14555974ebece235cd8c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 30
+  unspawnTime: 10
+  damage: 250
+  damageDistance: 5
+--- !u!114 &2108882751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108882744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b225e3a42b74f1682d32a45fb48d6f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DamagersOverTime: 0.1

@@ -13,7 +13,7 @@ public class HealingSystem : JobComponentSystem
     protected override void OnCreate()
     {
         buffer = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
-        targetEntities = GetEntityQuery(typeof(Life), ComponentType.ReadOnly<WorldRenderBounds>());
+        targetEntities = GetEntityQuery(ComponentType.ReadOnly<Healer>(), ComponentType.ReadOnly<LocalToWorld>(),  ComponentType.ReadOnly<Translation>());
         base.OnCreate();
     }
     
@@ -25,28 +25,29 @@ public class HealingSystem : JobComponentSystem
         var healAmmount = HealerGlobal.Instance.Amount;
         var deltaTime = Time.DeltaTime;
         // get entity references
-        var targetsPosition = targetEntities.ToComponentDataArray<WorldRenderBounds>(Allocator.TempJob);
-        var targetsLife = targetEntities.ToComponentDataArray<Life>(Allocator.TempJob);
-        var targetsRef = targetEntities.ToEntityArray(Allocator.TempJob);
+        var healerPosition = targetEntities.ToComponentDataArray<Translation>(Allocator.TempJob);
+        var healerL2W = targetEntities.ToComponentDataArray<LocalToWorld>(Allocator.TempJob);
 
         var baseJob = Entities
-            .WithDeallocateOnJobCompletion(targetsPosition)
-            .WithAll<Healer>()
-            .ForEach((in LocalToWorld l2w, in Translation tran) =>
+            .WithDeallocateOnJobCompletion(healerPosition)
+            .WithDeallocateOnJobCompletion(healerL2W)
+            .ForEach((Entity entity, in Life life, in WorldRenderBounds bounds) =>
             {
-                for (var i = 0; i < targetsPosition.Length; i++)
+                int heals = 0;
+                for (var i = 0; i < healerPosition.Length; i++)
                 {
-                    var pos = math.mul(new float4(tran.Value, 1), l2w.Value).xyz;
-                    var targetBound = targetsPosition[i].Value;
+                    var pos = math.mul(new float4(healerPosition[i].Value, 1), healerL2W[i].Value).xyz;
+                    var sqdist = math.distancesq(pos, bounds.Value.Center);
 
-                    var sqdist = math.distancesq(pos, targetBound.Center);
-                    //Debug.Log(pos);
                     if (sqdist < healDistance * healDistance)
                     {
-                        var currentHealth = math.min(targetsLife[i].amount + healAmmount * deltaTime, targetsLife[i].maxAmount);
-                        commandBuffer.SetComponent(0, targetsRef[i], new Life() {amount = currentHealth, maxAmount = targetsLife[i].maxAmount});
+                        heals++;
                     }
                 }
+                
+                var currentHealth = math.min(life.amount + healAmmount * deltaTime * heals, life.maxAmount);
+                commandBuffer.SetComponent(0, entity, new Life {amount = currentHealth, maxAmount = life.maxAmount});
+
             }).Schedule(inputDeps);
         buffer.AddJobHandleForProducer(baseJob);
         return baseJob;

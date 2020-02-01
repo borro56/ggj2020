@@ -11562,7 +11562,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   amount: 1
-  maxAmount: 100
+  maxAmount: 1000000
 --- !u!1001 &302700045
 PrefabInstance:
   m_ObjectHideFlags: 0

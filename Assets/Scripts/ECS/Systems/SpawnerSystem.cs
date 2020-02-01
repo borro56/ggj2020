@@ -32,10 +32,11 @@ namespace ECS.Systems
                         var randRotation = noise.snoise(spawnerWorldPos + time) * 360;
                         var quatRotation = quaternion.RotateY(randRotation);
                         var spawnPosition = spawnerWorldPos + math.rotate(quatRotation, new float3(1,0,0)) * spawner.radius;
-                        var direction = spawnPosition - spawnerWorldPos;
+                        var direction = spawnerWorldPos - spawnPosition;
                         var damagerInstance = commandBuffer.Instantiate(0, spawner.prefab);
 
                         commandBuffer.SetComponent(0, damagerInstance, new Translation {Value = spawnPosition});
+                        commandBuffer.SetComponent(0, damagerInstance, new Damager() {creationTime = time});
                         commandBuffer.SetComponent(0, damagerInstance, new DamagerDirection { Value = direction});
 
                         spawner.lastCreatedTime = time;

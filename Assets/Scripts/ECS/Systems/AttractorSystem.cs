@@ -25,6 +25,8 @@ public class AttractorSystem : JobComponentSystem
         return Entities.WithAll<Attractor>().ForEach((ref PhysicsVelocity vel, in Translation trans) =>
         {
             var diff = mousePos3D - trans.Value;
+            diff.y = 0;
+            
             var lengthSq = math.lengthsq(diff);
             if (lengthSq > minDistance * minDistance) return;
 

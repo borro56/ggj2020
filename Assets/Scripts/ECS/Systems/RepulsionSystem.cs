@@ -23,7 +23,7 @@ public class RepulsionSystem : JobComponentSystem
         var deltaTime = Time.DeltaTime;
         var repulsionPositions = targetEntities.ToComponentDataArray<Translation>(Allocator.TempJob);
 
-        //TODO: Replace with overlapsphere?
+        //TODO: Replace with overlapsphere? Use triggers?
         return Entities
             .WithDeallocateOnJobCompletion(repulsionPositions)
             .WithAll<Repulsion>()

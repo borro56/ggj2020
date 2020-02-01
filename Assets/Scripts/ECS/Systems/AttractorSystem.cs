@@ -20,8 +20,6 @@ public class AttractorSystem : JobComponentSystem
         var distanceToFloor = cam.transform.position.y;
         var mousePos = new float3(Mouse.current.position.ReadValue(), distanceToFloor);
         float3 mousePos3D = cam.ScreenToWorldPoint(mousePos);
-        
-        Debug.DrawRay(mousePos3D, Vector3.forward);
 
         return Entities.WithAll<Attractor>().ForEach((ref PhysicsVelocity vel, in Translation trans) =>
         {

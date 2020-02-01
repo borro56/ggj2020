@@ -131,7 +131,7 @@ MonoBehaviour:
   m_ForceUnique: 0
   m_Material:
     m_SupportsTemplate: 1
-    m_Template: {fileID: 0}
+    m_Template: {fileID: 11400000, guid: 0d60ef007817df54c9377e7c9c33563a, type: 2}
     m_IsTrigger:
       m_Override: 0
       m_Value: 0

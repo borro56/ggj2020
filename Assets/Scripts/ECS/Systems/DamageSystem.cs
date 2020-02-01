@@ -26,6 +26,7 @@ namespace ECS.Systems
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
+            
             var damage = DamagerPropertiesGlobal.Instance.damage;
             var damageDistance = DamagerPropertiesGlobal.Instance.damageDistance;
             var commandBuffer = _buffer.CreateCommandBuffer().ToConcurrent();
@@ -37,7 +38,7 @@ namespace ECS.Systems
                 .WithDeallocateOnJobCompletion(dangerEntities)
                 .WithDeallocateOnJobCompletion(dangerPositions)
                 .WithDeallocateOnJobCompletion(dangerL2W)
-                .ForEach((ref Life life, in WorldRenderBounds bounds) =>
+                .ForEach((Entity e, ref Life life, in WorldRenderBounds bounds) =>
                 {
                     float accumulatedDamage = 0;
                     for (var i = 0; i < dangerPositions.Length; i++)
@@ -60,7 +61,11 @@ namespace ECS.Systems
 
                     if (accumulatedDamage > 0)
                     {
-                        life.amount = math.max(life.amount - accumulatedDamage, 0);
+                        commandBuffer.SetComponent(0, e, new Life
+                        {
+                            amount =  math.max(life.amount - accumulatedDamage, 0),
+                            maxAmount = life.maxAmount
+                        });
                     }
                 }).Schedule(inputDeps);
             

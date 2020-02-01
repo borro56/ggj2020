@@ -1,6 +1,8 @@
-﻿using Unity.Entities;
+﻿using ECS.Systems;
+using Unity.Entities;
 using Unity.Jobs;
 
+[UpdateAfter(typeof(DamageSystem))]
 public class RemoveDeadSystem : JobComponentSystem
 {
     EndSimulationEntityCommandBufferSystem bufferSystem;

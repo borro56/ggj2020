@@ -36,6 +36,8 @@ public class HealingSystem : JobComponentSystem
             .WithDeallocateOnJobCompletion(healerL2W)
             .ForEach((Entity entity, in Life life, in WorldRenderBounds bounds) =>
             {
+                if (life.amount < life.maxAmount) return;
+                
                 int heals = 0;
                 for (var i = 0; i < healerPosition.Length; i++)
                 {

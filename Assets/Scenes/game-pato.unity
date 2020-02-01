@@ -558,9 +558,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc48111bc14555974ebece235cd8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.5
+  speed: 0.25
   unspawnTime: 5
-  damage: 50
+  damage: 25
   damageDistance: 10
 --- !u!1001 &5950427861888648556
 PrefabInstance:
@@ -582,7 +582,7 @@ PrefabInstance:
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: -1.31
       objectReference: {fileID: 0}
     - target: {fileID: 1116412096541003836, guid: 5cf79795cc8c14f4da413f604abd9887,
         type: 3}

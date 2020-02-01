@@ -21,6 +21,7 @@ public class AttractorSystem : JobComponentSystem
         var mousePos = new float3(Mouse.current.position.ReadValue(), distanceToFloor);
         float3 mousePos3D = cam.ScreenToWorldPoint(mousePos);
 
+        //TODO: Remove unity physics
         return Entities.WithAll<Attractor>().ForEach((ref PhysicsVelocity vel, in Translation trans) =>
         {
             var diff = mousePos3D - trans.Value;

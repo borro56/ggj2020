@@ -4,7 +4,6 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
-using UnityEngine;
 
 public class HealingRaySystem : JobComponentSystem
 { 
@@ -19,7 +18,9 @@ public class HealingRaySystem : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         var healDistance = HealerGlobal.Instance.Distance;
+       
         var deltaTime = Time.DeltaTime;
+        var time = (float)Time.ElapsedTime *  HealerRayGlobal.Instance.Frequency;
         var targets = targetEntities.ToComponentDataArray<WorldRenderBounds>(Allocator.TempJob);
 
         return Entities
@@ -27,26 +28,27 @@ public class HealingRaySystem : JobComponentSystem
             .WithAll<HealerRay>()
             .ForEach((ref NonUniformScale scale, ref Rotation rot, in LocalToWorld l2w, in Translation tran) =>
         {
+            var pos = math.mul(l2w.Value, new float4(tran.Value, 1)).xyz;
             for (var i = 0; i < targets.Length; i++)
             {
-                var pos = math.mul(new float4(tran.Value, 1), l2w.Value).xyz;
                 var targetBound = targets[i].Value;
 
-                var sqdist = math.distancesq(pos, targetBound.Center);
-                Debug.Log(pos);
+                var sqdist = targetBound.DistanceSq(pos);
                 if (sqdist > healDistance * healDistance)
                 {
                     scale.Value = new float3(0, 0, 0);
                     return;
                 }
 
+                var rnd = noise.snoise(pos + time);
+                var rndPos = targetBound.Center + targetBound.Extents * rnd;
+                
                 var dist = math.sqrt(sqdist);
-                var dir = math.normalize(targetBound.Center - pos);
+                var dir = math.normalize(rndPos - pos);
 
                 rot.Value = quaternion.LookRotation(dir, new float3(0, 1, 0));
-                scale.Value = new float3(0.25f, 0.25f, dist);
+                scale.Value = new float3(1, 1, dist);
             }
         }).Schedule(inputDeps);
-        
     }
 }

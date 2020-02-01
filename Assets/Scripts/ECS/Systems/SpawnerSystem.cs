@@ -21,6 +21,7 @@ namespace ECS.Systems
             var commandBuffer = buffer.CreateCommandBuffer().ToConcurrent();
             var time = (float)Time.ElapsedTime;
             var spawnsOverTime = SpawnerGlobal.Instance.DamagersOverTime;
+            var deathTimer = DamagerPropertiesGlobal.Instance.unspawnTime;
             
             var spawnerJob = Entities
                 .ForEach((ref DamagerSpawner spawner, in Translation translation, in LocalToWorld l2w) =>
@@ -32,11 +33,16 @@ namespace ECS.Systems
                         var randRotation = noise.snoise(spawnerWorldPos + time) * 360;
                         var quatRotation = quaternion.RotateY(randRotation);
                         var spawnPosition = spawnerWorldPos + math.rotate(quatRotation, new float3(1,0,0)) * spawner.radius;
-                        var direction = spawnPosition - spawnerWorldPos;
+                        var direction = spawnerWorldPos - spawnPosition;
                         var damagerInstance = commandBuffer.Instantiate(0, spawner.prefab);
 
                         commandBuffer.SetComponent(0, damagerInstance, new Translation {Value = spawnPosition});
                         commandBuffer.SetComponent(0, damagerInstance, new DamagerDirection { Value = direction});
+                        commandBuffer.AddComponent(0, damagerInstance, new DeathTimer()
+                        {
+                            timeWhenDeathTimerStarted= time,
+                            timeUntilObjectIsDestroyed = deathTimer
+                        });
 
                         spawner.lastCreatedTime = time;
                     }

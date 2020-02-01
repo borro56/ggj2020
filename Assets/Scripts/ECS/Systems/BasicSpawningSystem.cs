@@ -21,6 +21,8 @@ public class BasicSpawningSystem : JobComponentSystem
         var baseJob = Entities
             .ForEach((ref BasicSpawner spawner, in Translation translation, in Rotation rot) =>
             {
+                if(spawner.prefab == Entity.Null) return;
+
                 var delta = time - spawner.lastSpawn;
                 if(delta < spawner.rate) return;
                 spawner.lastSpawn = time;

@@ -16,7 +16,7 @@ public class HealingSystem : JobComponentSystem
     protected override void OnCreate()
     {
         buffer = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
-        targetEntities = GetEntityQuery(ComponentType.ReadOnly<Healer>(), ComponentType.ReadOnly<LocalToWorld>(),  ComponentType.ReadOnly<Translation>());
+        targetEntities = GetEntityQuery(ComponentType.ReadOnly<Healer>());
     }
     
     protected override JobHandle OnUpdate(JobHandle inputDeps)
@@ -26,25 +26,20 @@ public class HealingSystem : JobComponentSystem
         var healDistance = HealerGlobal.Instance.Distance;
         var healAmmount = HealerGlobal.Instance.Amount;
         var deltaTime = Time.DeltaTime;
-        // get entity references
-        var healerPosition = targetEntities.ToComponentDataArray<Translation>(Allocator.TempJob);
-        var healerL2W = targetEntities.ToComponentDataArray<LocalToWorld>(Allocator.TempJob);
+        
+        var healers = targetEntities.ToComponentDataArray<Healer>(Allocator.TempJob);
 
         var baseJob = Entities
             .WithAll<Healeable>()
-            .WithDeallocateOnJobCompletion(healerPosition)
-            .WithDeallocateOnJobCompletion(healerL2W)
+            .WithDeallocateOnJobCompletion(healers)
             .ForEach((Entity entity, in Life life, in WorldRenderBounds bounds) =>
             {
-                if (life.amount < life.maxAmount) return;
+                if (life.amount >= life.maxAmount) return;
                 
                 int heals = 0;
-                for (var i = 0; i < healerPosition.Length; i++)
+                for (var i = 0; i < healers.Length; i++)
                 {
-                    var pos = math.mul(new float4(healerPosition[i].Value, 1), healerL2W[i].Value).xyz;
-                    var sqdist = math.distancesq(pos, bounds.Value.Center);
-
-                    if (sqdist < healDistance * healDistance)
+                    if (healers[i].target == entity)
                     {
                         heals++;
                     }

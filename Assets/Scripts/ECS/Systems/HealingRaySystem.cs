@@ -7,50 +7,40 @@ using Unity.Transforms;
 
 public class HealingRaySystem : JobComponentSystem
 { 
-    EntityQuery targetEntities;
-    
-    protected override void OnCreate()
-    {
-        targetEntities = GetEntityQuery(typeof(Life), ComponentType.ReadOnly<WorldRenderBounds>(), ComponentType.ReadOnly<Healeable>());
-        base.OnCreate();
-    }
-    
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        var healDistance = HealerGlobal.Instance.Distance;
-       
-        var deltaTime = Time.DeltaTime;
+        var healerContainer = GetComponentDataFromEntity<Healer>(true);
+        var worldRenderBounds = GetComponentDataFromEntity<WorldRenderBounds>(true);
+
         var time = (float)Time.ElapsedTime *  HealerRayGlobal.Instance.Frequency;
-        var targets = targetEntities.ToComponentDataArray<WorldRenderBounds>(Allocator.TempJob);
-        var targetsLife = targetEntities.ToComponentDataArray<Life>(Allocator.TempJob);
 
         return Entities
-            .WithDeallocateOnJobCompletion(targets)
-            .WithDeallocateOnJobCompletion(targetsLife)
+            .WithReadOnly(healerContainer)
+            .WithReadOnly(worldRenderBounds)
             .WithAll<HealerRay>()
-            .ForEach((ref NonUniformScale scale, ref Rotation rot, in LocalToWorld l2w, in Translation tran) =>
+            .ForEach((ref NonUniformScale scale, ref Rotation rot, in LocalToWorld l2w, in Translation tran, in Parent parent) =>
         {
-            var pos = math.mul(l2w.Value, new float4(tran.Value, 1)).xyz;
-            for (var i = 0; i < targets.Length; i++)
+            var target = healerContainer[parent.Value].target;
+
+            if (target == Entity.Null)
             {
-                if(targetsLife[i].amount >= targetsLife[i].maxAmount) continue;
-                
-                var targetBound = targets[i].Value;
-                var sqDist = targetBound.DistanceSq(pos);
-                if (sqDist > healDistance * healDistance) continue;
-
-                var rnd = noise.snoise(pos + time);
-                var rndPos = targetBound.Center + targetBound.Extents * rnd;
-                
-                var dist = math.sqrt(sqDist);
-                var dir = math.normalize(rndPos - pos);
-
-                rot.Value = quaternion.LookRotation(dir, new float3(0, 1, 0));
-                scale.Value = new float3(1, 1, dist);
-                
+                scale.Value = new float3(0, 0, 0);
                 return;
             }
-            scale.Value = new float3(0, 0, 0);
+            
+            var pos = math.mul(l2w.Value, new float4(tran.Value, 1)).xyz;
+            var targetBound = worldRenderBounds[target].Value;
+            
+            var sqDist = targetBound.DistanceSq(pos);
+
+            var rnd = noise.snoise(pos + time);
+            var rndPos = targetBound.Center + targetBound.Extents * rnd;
+            
+            var dist = math.sqrt(sqDist);
+            var dir = math.normalize(rndPos - pos);
+
+            rot.Value = quaternion.LookRotation(dir, new float3(0, 1, 0));
+            scale.Value = new float3(1, 1, dist);
         }).Schedule(inputDeps);
     }
 }

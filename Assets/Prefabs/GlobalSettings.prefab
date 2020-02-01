@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6daa8d983a445d98d6f9ae8e551ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 10
+  Amount: 5
   Distance: 10
 --- !u!114 &2498210339165929121
 MonoBehaviour:
@@ -104,7 +104,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b225e3a42b74f1682d32a45fb48d6f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DamagersOverTime: 0.05
+  DamagersOverTime: 0.5
 --- !u!114 &2498210339165929122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,8 +117,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59bc48111bc14555974ebece235cd8c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.25
-  unspawnTime: 5
+  speed: 15
+  unspawnTime: 60
   damage: 25
   damageDistance: 10
 --- !u!114 &1780357814028681116

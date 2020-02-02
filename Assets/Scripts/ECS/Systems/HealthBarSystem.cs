@@ -16,6 +16,7 @@ namespace ECS.Systems
                 .WithAll<HealthBar>()
                 .ForEach((ref NonUniformScale scale, in Parent parent) =>
                 {
+                    if(!lifeContainer.Exists(parent.Value)) return;
                     var parentLife = lifeContainer[parent.Value];
                     scale.Value.x = parentLife.amount / parentLife.maxAmount;
                 }).Schedule(inputDeps);

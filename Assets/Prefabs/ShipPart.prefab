@@ -74,6 +74,7 @@ GameObject:
   - component: {fileID: -1098502710918190893}
   - component: {fileID: 1562376628249197969}
   - component: {fileID: 6106171198040731894}
+  - component: {fileID: 941827518272947553}
   m_Layer: 0
   m_Name: ShipPart
   m_TagString: Untagged
@@ -185,6 +186,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &941827518272947553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710053180442623866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc287f339b4a78abeb38f7c44971fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3607947441124974702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,31 +504,6 @@ PrefabInstance:
     - target: {fileID: 6000332079914143058, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
-        type: 3}
-      propertyPath: amount
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
-        type: 3}
-      propertyPath: startRate
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
-        type: 3}
-      propertyPath: finalRate
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
-        type: 3}
-      propertyPath: setRotation
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
-        type: 3}
-      propertyPath: global
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143062, guid: 3beb9623008c977499410d6859360770,

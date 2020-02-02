@@ -10,6 +10,8 @@ public struct BasicSpawner : IComponentData
     public float finalRate;
     public float rateTime;
     public float3 areaSize;
+    public bool global;
+    public int amount;
     
     [HideInInspector] public float lastSpawn;
 }

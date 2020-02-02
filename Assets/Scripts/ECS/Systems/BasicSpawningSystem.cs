@@ -22,6 +22,9 @@ public class BasicSpawningSystem : JobComponentSystem
         var baseJob = Entities
             .ForEach((ref BasicSpawner spawner, in Translation translation, in Rotation rot, in LocalToWorld l2w) =>
             {
+                if(spawner.amount == 0) return;
+                spawner.amount--;
+                
                 var deltaRate = spawner.finalRate - spawner.startRate;
                 var rate = spawner.startRate + deltaRate * math.min(1, time / spawner.rateTime);
                 
@@ -29,8 +32,9 @@ public class BasicSpawningSystem : JobComponentSystem
                 if(delta < rate) return;
                 spawner.lastSpawn = time;
 
-                var globalRotation = quaternion.LookRotation(l2w.Forward, l2w.Up);
-                var globalPos = math.mul(l2w.Value, new float4(translation.Value, 1)).xyz;
+                //TODO: Fix this negrada
+                var globalRotation = spawner.global ? quaternion.LookRotation(l2w.Forward, l2w.Up) : rot.Value;
+                var globalPos = spawner.global ? math.mul(l2w.Value, new float4(translation.Value, 1)).xyz : translation.Value;
                 
                 var up = math.mul(globalRotation, new float3(0, 1, 0));
                 var right = math.mul(globalRotation, new float3(1, 0, 0));

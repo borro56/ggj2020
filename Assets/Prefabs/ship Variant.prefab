@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 6da1fe4e8718c714092dfb2b0b56e25c,
         type: 3}
       propertyPath: m_Name
-      value: ship 1
+      value: ship Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6da1fe4e8718c714092dfb2b0b56e25c, type: 3}

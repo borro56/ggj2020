@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 4818025792591942647, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1,
         type: 3}
       propertyPath: areaSize.x
-      value: 80
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4818025792591942647, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1,
         type: 3}
@@ -250,12 +250,12 @@ PrefabInstance:
     - target: {fileID: 4818025792591942647, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1,
         type: 3}
       propertyPath: startRate
-      value: 0.5
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 4818025792591942647, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1,
         type: 3}
       propertyPath: finalRate
-      value: 0.01
+      value: 0.0001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0cf4fad7ea7849fe9b28b4c3549e1e1, type: 3}

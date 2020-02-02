@@ -130,6 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecfaad86fe74454bf0a5d19abbd3660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Distance: 500
+  Force: 50
   groupId: 0
 --- !u!114 &2176103874326365344
 MonoBehaviour:

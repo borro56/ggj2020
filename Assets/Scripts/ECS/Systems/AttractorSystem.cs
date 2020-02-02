@@ -28,8 +28,6 @@ public abstract class BaseAttractorSystem : JobComponentSystem
         var cam = Camera.main;
         if (cam == null || !Button.isPressed) return inputDeps; //TODO: Replace with new Unity Input
         
-        var force = AttractionGlobal.Instance.Force;
-        var minDistance = AttractionGlobal.Instance.Distance;
         var targetGroup = TargetGroup;
         
         var deltaTime = Time.DeltaTime;
@@ -46,13 +44,13 @@ public abstract class BaseAttractorSystem : JobComponentSystem
             diff.y = 0;
             
             var lengthSq = math.lengthsq(diff);
-            if (lengthSq > minDistance * minDistance) return;
+            if (lengthSq > attractor.Distance * attractor.Distance) return;
 
             var dist = math.sqrt(lengthSq);
-            var distCoef = dist / minDistance;
+            var distCoef = dist / attractor.Distance;
             var forceCoef = 1 - distCoef * distCoef;
             var dirToMouse = math.normalize(diff);
-            vel.Value += dirToMouse * force * forceCoef * deltaTime;
+            vel.Value += dirToMouse * attractor.Force * forceCoef * deltaTime;
 
         }).Schedule(inputDeps);
     }

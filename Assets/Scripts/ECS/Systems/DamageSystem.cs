@@ -60,7 +60,6 @@ namespace ECS.Systems
 
                     if (accumulatedDamage > 0)
                     {
-                        Debug.Log(life.amount - accumulatedDamage);
                         commandBuffer.SetComponent(0, e, new Life
                         {
                             amount =  math.max(life.amount - accumulatedDamage, 0),

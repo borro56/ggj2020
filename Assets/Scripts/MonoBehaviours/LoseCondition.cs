@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LoseCondition : MonoBehaviour
 {
+    float delay = 1;
     EntityQuery query;
     float time = -1;
     [SerializeField] TextMeshProUGUI text;
@@ -12,13 +13,16 @@ public class LoseCondition : MonoBehaviour
 
     public bool Won => time >= 0;
 
-    void Awake()
+    void Start()
     {
         query = World.DefaultGameObjectInjectionWorld.EntityManager.CreateEntityQuery(typeof(Ship));
     }
 
     void Update()
     {
+        delay -= Time.deltaTime;
+        if(delay > 0) return;
+        
         if (!Won && query.CalculateEntityCount() <= 0)
         {
             time = Time.realtimeSinceStartup;

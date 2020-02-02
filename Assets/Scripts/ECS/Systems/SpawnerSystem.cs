@@ -20,7 +20,7 @@ namespace ECS.Systems
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
             var commandBuffer = buffer.CreateCommandBuffer().ToConcurrent();
-            var time = (float)Time.ElapsedTime;
+            var time = UnityEngine.Time.realtimeSinceStartup;
             var spawnsOverTime = SpawnerGlobal.Instance.DamagersOverTime;
             var deathTimer = DamagerPropertiesGlobal.Instance.unspawnTime;
             var speed = DamagerPropertiesGlobal.Instance.speed;

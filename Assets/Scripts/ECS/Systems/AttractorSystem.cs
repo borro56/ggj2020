@@ -1,20 +1,36 @@
 ﻿using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Unity.Physics;
 using Unity.Transforms;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
-public class AttractorSystem : JobComponentSystem
+public class Group1AttractorSystem : BaseAttractorSystem
 {
+    public override int TargetGroup => 0;
+    public override ButtonControl Button => Mouse.current.leftButton;
+}
+
+public class Group2AttractorSystem : BaseAttractorSystem
+{
+    public override int TargetGroup => 1;
+    public override ButtonControl Button => Mouse.current.rightButton;
+}
+
+public abstract class BaseAttractorSystem : JobComponentSystem
+{
+    public abstract int TargetGroup { get; }
+    public abstract ButtonControl Button { get; }
+    
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         var cam = Camera.main;
-        if (cam == null || !Mouse.current.leftButton.isPressed) return inputDeps; //TODO: Replace with new Unity Input
+        if (cam == null || !Button.isPressed) return inputDeps; //TODO: Replace with new Unity Input
         
         var force = AttractionGlobal.Instance.Force;
         var minDistance = AttractionGlobal.Instance.Distance;
+        var targetGroup = TargetGroup;
         
         var deltaTime = Time.DeltaTime;
         var distanceToFloor = cam.transform.position.y;
@@ -22,8 +38,10 @@ public class AttractorSystem : JobComponentSystem
         float3 mousePos3D = cam.ScreenToWorldPoint(mousePos);
 
         //TODO: Remove unity physics
-        return Entities.WithAll<Attractor>().ForEach((ref Velocity vel, in Translation trans) =>
+        return Entities.ForEach((ref Velocity vel, in Attractor attractor, in Translation trans) =>
         {
+            if(attractor.groupId != targetGroup) return;
+
             var diff = mousePos3D - trans.Value;
             diff.y = 0;
             

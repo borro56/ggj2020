@@ -17,7 +17,7 @@ public class RandomizeRotationSystem : JobComponentSystem
             if(delta < rate) return;
             rndRot.lastTime = time;
             
-            var rndY = noise.snoise(rot.Value.value * time * 123156) * 180;
+            var rndY = noise.snoise(rot.Value.value * time * 1256) * 180;
             rot.Value = quaternion.Euler(0, rndY, 0);
         }).Schedule(inputDeps);
     }

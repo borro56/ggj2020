@@ -44,7 +44,7 @@ namespace ECS.Systems
                     
                     for (var i = 0; i < targetPosition.Length; i++)
                     {
-                        if(targetTeam[i].id != 2) continue; //TODO: Unhardcode
+                        if(targetTeam[i].id == 1) continue; //TODO: Unhardcode
                         
                         var forward = math.normalize(targetPosition[i].Value - globalPos);
                         var angle = math.dot(math.forward(lookAt.lastRotation), forward);

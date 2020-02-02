@@ -410,12 +410,12 @@ PrefabInstance:
     - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: startRate
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
         type: 3}
       propertyPath: finalRate
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 6000332079914143061, guid: 3beb9623008c977499410d6859360770,
         type: 3}

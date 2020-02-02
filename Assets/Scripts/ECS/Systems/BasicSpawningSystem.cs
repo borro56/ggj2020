@@ -3,6 +3,7 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
+using UnityEngine;
 using UnityEngine.Video;
 
 public class BasicSpawningSystem : JobComponentSystem
@@ -18,7 +19,7 @@ public class BasicSpawningSystem : JobComponentSystem
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
         var commandBuffer = buffer.CreateCommandBuffer().ToConcurrent();
-        var time = (float)Time.ElapsedTime;
+        var time = UnityEngine.Time.time;
         
         var baseJob = Entities
             .ForEach((ref BasicSpawner spawner, in Translation translation, in Rotation rot, in LocalToWorld l2w) =>
@@ -28,6 +29,9 @@ public class BasicSpawningSystem : JobComponentSystem
                 
                 var deltaRate = spawner.finalRate - spawner.startRate;
                 var rate = spawner.startRate + deltaRate * math.min(1, time / spawner.rateTime);
+                
+                Debug.Log(time / spawner.rateTime);
+                
                 
                 var delta = time - spawner.lastSpawn;
                 if(delta < rate) return;

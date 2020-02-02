@@ -27,7 +27,7 @@ namespace ECS.Systems
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
-            
+            var prefab = DamagerPropertiesGlobal.Instance.EntityPrefab;
             var damage = DamagerPropertiesGlobal.Instance.damage;
             var commandBuffer = _buffer.CreateCommandBuffer().ToConcurrent();
             var dangerEntities = _dangerEntities.ToEntityArray(Allocator.TempJob);
@@ -51,6 +51,9 @@ namespace ECS.Systems
                             accumulatedDamage += damage;
                             
                             commandBuffer.DestroyEntity(0, dangerEntities[i]);
+
+                            var expl = commandBuffer.Instantiate(0, prefab);
+                            commandBuffer.SetComponent(0, expl, dangerPositions[i]);
                         }
                     }
 

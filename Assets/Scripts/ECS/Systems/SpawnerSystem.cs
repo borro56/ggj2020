@@ -20,7 +20,7 @@ namespace ECS.Systems
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
             var commandBuffer = buffer.CreateCommandBuffer().ToConcurrent();
-            var time = UnityEngine.Time.time;
+            var time = UnityEngine.Time.realtimeSinceStartup;
             var spawnsOverTime = SpawnerGlobal.Instance.DamagersOverTime;
             var deathTimer = DamagerPropertiesGlobal.Instance.unspawnTime;
             var speed = DamagerPropertiesGlobal.Instance.speed;
@@ -42,7 +42,7 @@ namespace ECS.Systems
                         commandBuffer.SetComponent(0, damagerInstance, new Velocity {Value = direction * speed});
                         commandBuffer.AddComponent(0, damagerInstance, new DeathTimer()
                         {
-                            timeWhenDeathTimerStarted= time,
+                            timeWhenDeathTimerStarted = time,
                             timeUntilObjectIsDestroyed = deathTimer
                         });
 

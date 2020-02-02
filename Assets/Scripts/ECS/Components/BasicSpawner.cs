@@ -13,6 +13,7 @@ public struct BasicSpawner : IComponentData
     public bool global;
     public bool setRotation;
     public int amount;
+    public int amountPerFrame;
     
     [HideInInspector] public float lastSpawn;
 }

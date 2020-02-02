@@ -20,11 +20,14 @@ namespace ECS.Systems
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
             var commandBuffer = buffer.CreateCommandBuffer().ToConcurrent();
-            var time = UnityEngine.Time.timeSinceLevelLoad;
+            var time = UnityEngine.Time.realtimeSinceStartup;
+            var deltaTime = Time.DeltaTime;
             var job = Entities
-                .ForEach((Entity entity, in DeathTimer deathTimer) =>
+                .ForEach((Entity entity, ref DeathTimer deathTimer) =>
                 {
-                    if (time - deathTimer.timeWhenDeathTimerStarted > deathTimer.timeUntilObjectIsDestroyed)
+                    deathTimer.timeUntilObjectIsDestroyed -= deltaTime;
+                    //if (time - deathTimer.timeWhenDeathTimerStarted > deathTimer.timeUntilObjectIsDestroyed)
+                    if(deathTimer.timeUntilObjectIsDestroyed <= 0)
                     {
                         commandBuffer.DestroyEntity(0, entity);
                     }

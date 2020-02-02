@@ -22,8 +22,10 @@ namespace ECS.Systems
                 .ForEach((ref Rotation rotation, in Parent parent, in Translation trans, in LocalToWorld l2w) =>
                 {
                     var pos = math.mul(l2w.Value, new float4(trans.Value, 1)).xyz;
-                    var healingTarget = healerContainer[parent.Value].target;
                     var velocity = velocityContainer[parent.Value];
+                    var healingTarget = healerContainer.HasComponent(parent.Value) ?  
+                        healerContainer[parent.Value].target : 
+                        Entity.Null;
                     
                     float3 target = float3.zero;
 

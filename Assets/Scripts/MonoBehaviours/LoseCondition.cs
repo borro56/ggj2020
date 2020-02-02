@@ -28,6 +28,7 @@ public class LoseCondition : MonoBehaviour
 
         if (!Won && query.CalculateEntityCount() <= 0)
         {
+            GameUI.Instance.gameObject.SetActive(false);
             ScoreManager.Instance.enabled = false;
             music.clip = loseMusic;
             time = Time.timeSinceLevelLoad;

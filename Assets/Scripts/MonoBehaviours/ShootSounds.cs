@@ -6,6 +6,7 @@ using UnityEngine;
 public class ShootSounds : MonoBehaviour
 {
     [SerializeField] AudioClip shootSound;
+    [SerializeField] AudioClip eplosionSound;
 
     float delay;
     List<AudioSource> shootSounds = new List<AudioSource>();
@@ -23,6 +24,11 @@ public class ShootSounds : MonoBehaviour
         for (int i = amount; i < shootSounds.Count; i++)
         {
             Destroy(shootSounds[i].gameObject);
+            
+            var audio = new GameObject().AddComponent<AudioSource>();
+            audio.clip = eplosionSound;
+            audio.Play();
+            Destroy(audio.gameObject, eplosionSound.length);
         }
 
         for (int i = amount; i < shootSounds.Count; i++)

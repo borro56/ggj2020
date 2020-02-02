@@ -10,6 +10,8 @@ public class LoseCondition : MonoBehaviour
     float time = -1;
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] GameObject resetButton;
+    [SerializeField] AudioSource music;
+    [SerializeField] AudioClip loseMusic;
 
     public bool Won => time >= 0;
 
@@ -25,6 +27,7 @@ public class LoseCondition : MonoBehaviour
         
         if (!Won && query.CalculateEntityCount() <= 0)
         {
+            music.clip = loseMusic;
             time = Time.realtimeSinceStartup;
             text.text = "You survived " + time.ToString("000") + " seconds";
             text.gameObject.SetActive(true);

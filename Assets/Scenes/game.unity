@@ -1463,6 +1463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSound: {fileID: 8300000, guid: 91cfada8018a44c5399a2b8b374188a3, type: 3}
+  volume: 1
+  maxAmount: 3
 --- !u!4 &1207275469
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,6 +1817,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootSound: {fileID: 8300000, guid: 24783831d3a414709ae09fe765cbb435, type: 3}
+  eplosionSound: {fileID: 8300000, guid: 2d34cff39082aa940b2ba0beda169052, type: 3}
 --- !u!4 &1794395029
 Transform:
   m_ObjectHideFlags: 0
@@ -1944,6 +1947,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1547872753}
   resetButton: {fileID: 1137606274}
+  music: {fileID: 635955645}
+  loseMusic: {fileID: 8300000, guid: 32dc3b1db1e1a83449fbe7e0a8c07d22, type: 3}
 --- !u!1001 &3710053180140662286
 PrefabInstance:
   m_ObjectHideFlags: 0

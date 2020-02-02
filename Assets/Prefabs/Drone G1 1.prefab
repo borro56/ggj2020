@@ -298,8 +298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecfaad86fe74454bf0a5d19abbd3660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 40
-  Force: 300
+  Distance: 60
+  Force: 350
   groupId: 1
 --- !u!114 &3670430505545738131
 MonoBehaviour:

@@ -2,7 +2,6 @@
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
-using Unity.Physics;
 using Unity.Transforms;
 
 public class RepulsionSystem : JobComponentSystem
@@ -27,7 +26,7 @@ public class RepulsionSystem : JobComponentSystem
         return Entities
             .WithDeallocateOnJobCompletion(repulsionPositions)
             .WithAll<Repulsion>()
-            .ForEach((ref PhysicsVelocity vel, in Translation trans) =>
+            .ForEach((ref Velocity vel, in Translation trans) =>
         {
             for (var i = 0; i < repulsionPositions.Length; i++)
             {
@@ -43,7 +42,7 @@ public class RepulsionSystem : JobComponentSystem
                 var dist = math.sqrt(lengthSq);
                 var forceCoef = 1 - dist / minDistance;
                 var dirToMouse = math.normalize(diff);
-                vel.Linear += dirToMouse * force * forceCoef * deltaTime;
+                vel.Value += dirToMouse * force * forceCoef * deltaTime;
             }
         }).Schedule(inputDeps);
     }

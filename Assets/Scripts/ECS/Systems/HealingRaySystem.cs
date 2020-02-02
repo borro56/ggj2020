@@ -1,9 +1,9 @@
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Rendering;
 using Unity.Transforms;
+using UnityEngine;
 
 public class HealingRaySystem : JobComponentSystem
 { 
@@ -31,12 +31,10 @@ public class HealingRaySystem : JobComponentSystem
             var pos = math.mul(l2w.Value, new float4(tran.Value, 1)).xyz;
             var targetBound = worldRenderBounds[target].Value;
             
-            var sqDist = targetBound.DistanceSq(pos);
-
             var rnd = noise.snoise(pos + time);
             var rndPos = targetBound.Center + targetBound.Extents * rnd;
-            
-            var dist = math.sqrt(sqDist);
+
+            var dist = math.distance(rndPos, pos);
             var dir = math.normalize(rndPos - pos);
 
             rot.Value = quaternion.LookRotation(dir, new float3(0, 1, 0));

@@ -17,23 +17,23 @@ MonoBehaviour:
     m_Template: {fileID: 0}
     m_IsTrigger:
       m_Override: 1
-      m_Value: 0
+      m_Value: 1
     m_Friction:
       m_Override: 1
       m_Value:
         Value: 0
-        CombineMode: 0
+        CombineMode: 1
     m_Restitution:
       m_Override: 1
       m_Value:
         Value: 0
-        CombineMode: 2
+        CombineMode: 1
     m_BelongsTo:
       m_Override: 1
       m_Value: 0001000000000000000000000000000000000000000000000000000000000000
     m_CollidesWith:
       m_Override: 1
-      m_Value: 0101000000000000000000000000000000000000000000000000000000000000
+      m_Value: 0100000000000000000000000000000000000000000000000000000000000000
     m_RaisesCollisionEvents:
       m_Override: 1
       m_Value: 0

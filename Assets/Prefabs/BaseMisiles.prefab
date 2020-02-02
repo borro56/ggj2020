@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -2304399013799574360}
   - component: {fileID: 7769221545417939106}
   - component: {fileID: 5293988870758262327}
+  - component: {fileID: -1127082205581123991}
   m_Layer: 0
   m_Name: BaseMisiles
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 1255605702937034655}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10000, y: 10000, z: 10000}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1d8a6550dfaa64967b5774f1f40bbeb0, type: 2}
+  - {fileID: 2100000, guid: 613cce2e9b52c744bb33d1048626f44a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -148,3 +149,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 465bb1433864476f80c281e5480750e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1127082205581123991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255605702937034655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933a8400eb66464b937a53025addc7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Value:
+    x: 0
+    y: 0
+    z: 0
+  damping: 0

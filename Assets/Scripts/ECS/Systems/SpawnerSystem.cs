@@ -22,6 +22,7 @@ namespace ECS.Systems
             var time = (float)Time.ElapsedTime;
             var spawnsOverTime = SpawnerGlobal.Instance.DamagersOverTime;
             var deathTimer = DamagerPropertiesGlobal.Instance.unspawnTime;
+            var speed = DamagerPropertiesGlobal.Instance.speed;
             
             var spawnerJob = Entities
                 .ForEach((ref DamagerSpawner spawner, in Translation translation, in LocalToWorld l2w) =>
@@ -37,7 +38,7 @@ namespace ECS.Systems
                         var damagerInstance = commandBuffer.Instantiate(0, spawner.prefab);
                         
                         commandBuffer.SetComponent(0, damagerInstance, new Translation {Value = spawnPosition});
-                        commandBuffer.SetComponent(0, damagerInstance, new DamagerDirection { Value = direction});
+                        commandBuffer.SetComponent(0, damagerInstance, new Velocity {Value = direction * speed});
                         commandBuffer.AddComponent(0, damagerInstance, new DeathTimer()
                         {
                             timeWhenDeathTimerStarted= time,

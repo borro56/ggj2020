@@ -43,6 +43,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d13f8e3dbd74691ac9aab5bea3ca1f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5165491638636741995, guid: 5e7da080c10e5a44ba179a87f86b2e1e, type: 3}
-  rate: 0.2
+  prefab: {fileID: 1255605702937034655, guid: f5d8ffd469fee074ba29435e2c236719, type: 3}
+  startRate: 0.05
+  finalRate: 0.0025
+  rateTime: 120
+  areaSize:
+    x: 80
+    y: 0
+    z: 0
+  global: 1
+  setRotation: 1
+  amount: -1
   lastSpawn: 0

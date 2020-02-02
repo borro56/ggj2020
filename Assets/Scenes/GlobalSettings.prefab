@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2498210339165929123}
   - component: {fileID: 2498210339165929122}
   - component: {fileID: 1780357814028681116}
+  - component: {fileID: 830891913}
   m_Layer: 0
   m_Name: GlobalSettings
   m_TagString: Untagged
@@ -49,8 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e3992a0df5816f4d815e786dd9d4e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 20
-  Force: 100
+  Distance: 100
+  Force: 300
 --- !u!114 &2498210339165929126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63,8 +64,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e45652fb7d3f44cc854a8625c2d1c900, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Distance: 1.5
-  Force: 50
+  Distance: 1
+  Force: 150
 --- !u!114 &2498210339165929120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -77,8 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce6daa8d983a445d98d6f9ae8e551ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Amount: 5
-  Distance: 10
+  Amount: 2
+  Distance: 15
 --- !u!114 &2498210339165929121
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -119,8 +120,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 15
   unspawnTime: 60
-  damage: 25
-  damageDistance: 10
+  damage: 50
 --- !u!114 &1780357814028681116
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,3 +135,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   min: {x: -100, y: -100, z: -100}
   max: {x: 100, y: 100, z: 100}
+--- !u!114 &830891913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2498210339165929125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a4cf50685854d9fa5f0339287eab739, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  angleLimit: 3
+  rotationSpeed: 3

@@ -11,6 +11,7 @@ public struct BasicSpawner : IComponentData
     public float rateTime;
     public float3 areaSize;
     public bool global;
+    public bool setRotation;
     public int amount;
     
     [HideInInspector] public float lastSpawn;

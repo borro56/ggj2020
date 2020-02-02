@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using Unity.Collections;
+using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -49,7 +50,10 @@ public class BasicSpawningSystem : JobComponentSystem
                 
                 var instance = commandBuffer.Instantiate(0, spawner.prefab);
                 commandBuffer.SetComponent(0, instance, new Translation {Value = spawnPosition});
-                commandBuffer.SetComponent(0, instance, new Rotation{Value = globalRotation}); 
+
+                if (spawner.setRotation)
+                    commandBuffer.SetComponent(0, instance, new Rotation {Value = globalRotation});
+                
             }).Schedule(inputDeps);
         buffer.AddJobHandleForProducer(baseJob);
         return baseJob;

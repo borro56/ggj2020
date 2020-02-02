@@ -22,7 +22,7 @@ public class AttractorSystem : JobComponentSystem
         float3 mousePos3D = cam.ScreenToWorldPoint(mousePos);
 
         //TODO: Remove unity physics
-        return Entities.WithAll<Attractor>().ForEach((ref PhysicsVelocity vel, in Translation trans) =>
+        return Entities.WithAll<Attractor>().ForEach((ref Velocity vel, in Translation trans) =>
         {
             var diff = mousePos3D - trans.Value;
             diff.y = 0;
@@ -33,7 +33,7 @@ public class AttractorSystem : JobComponentSystem
             var dist = math.sqrt(lengthSq);
             var forceCoef = 1 - dist / minDistance;
             var dirToMouse = math.normalize(diff);
-            vel.Linear += dirToMouse * force * forceCoef * deltaTime;
+            vel.Value += dirToMouse * force * forceCoef * deltaTime;
 
         }).Schedule(inputDeps);
     }

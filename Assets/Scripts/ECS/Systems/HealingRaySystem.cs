@@ -11,7 +11,7 @@ public class HealingRaySystem : JobComponentSystem
     {
         var healerContainer = GetComponentDataFromEntity<Healer>(true);
         var worldRenderBounds = GetComponentDataFromEntity<WorldRenderBounds>(true);
-        var time = UnityEngine.Time.realtimeSinceStartup*  HealerRayGlobal.Instance.Frequency;
+        var time = UnityEngine.Time.timeSinceLevelLoad *  HealerRayGlobal.Instance.Frequency;
 
         return Entities
             .WithReadOnly(healerContainer)

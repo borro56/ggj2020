@@ -1,10 +1,7 @@
-﻿using Unity.Collections;
-using Unity.Entities;
+﻿using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
-using UnityEngine;
-using UnityEngine.Video;
 
 public class BasicSpawningSystem : JobComponentSystem
 {
@@ -22,11 +19,14 @@ public class BasicSpawningSystem : JobComponentSystem
         var time = UnityEngine.Time.time;
         
         var baseJob = Entities
-            .ForEach((ref BasicSpawner spawner, in Translation translation, in Rotation rot, in LocalToWorld l2w) =>
+            .ForEach((Entity en, ref BasicSpawner spawner, in Translation translation, in Rotation rot, in LocalToWorld l2w) =>
             {
-                if(spawner.amount == 0) return;
-                spawner.amount--;
+                if (spawner.amount > 0)
+                    spawner.amount--;
                 
+                if (spawner.amount == 0)
+                    commandBuffer.RemoveComponent<BasicSpawner>(0, en);
+
                 var deltaRate = spawner.finalRate - spawner.startRate;
                 var rate = spawner.startRate + deltaRate * math.min(1, time / spawner.rateTime);
                 

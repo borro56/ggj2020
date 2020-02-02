@@ -28,7 +28,7 @@ public class LoseCondition : MonoBehaviour
         if (!Won && query.CalculateEntityCount() <= 0)
         {
             music.clip = loseMusic;
-            time = Time.realtimeSinceStartup;
+            time = Time.timeSinceLevelLoad;
             text.text = "You survived " + time.ToString("000") + " seconds";
             text.gameObject.SetActive(true);
             //resetButton.SetActive(true);

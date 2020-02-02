@@ -20,7 +20,7 @@ namespace ECS.Systems
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
             var commandBuffer = buffer.CreateCommandBuffer().ToConcurrent();
-            var time = UnityEngine.Time.realtimeSinceStartup;
+            var time = UnityEngine.Time.timeSinceLevelLoad;
             var job = Entities
                 .ForEach((Entity entity, in DeathTimer deathTimer) =>
                 {

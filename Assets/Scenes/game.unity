@@ -147,7 +147,7 @@ PrefabInstance:
     - target: {fileID: 2498210339165929124, guid: 28e54c1f61ac2496999fbafec347cfef,
         type: 3}
       propertyPath: Distance
-      value: 50
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 2498210339165929125, guid: 28e54c1f61ac2496999fbafec347cfef,
         type: 3}
@@ -157,7 +157,12 @@ PrefabInstance:
     - target: {fileID: 2498210339165929126, guid: 28e54c1f61ac2496999fbafec347cfef,
         type: 3}
       propertyPath: Force
-      value: 100
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498210339165929126, guid: 28e54c1f61ac2496999fbafec347cfef,
+        type: 3}
+      propertyPath: Distance
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 2498210339165929127, guid: 28e54c1f61ac2496999fbafec347cfef,
         type: 3}

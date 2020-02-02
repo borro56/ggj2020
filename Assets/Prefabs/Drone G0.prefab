@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 8600451624639785304}
   - component: {fileID: -2042290418187150222}
   m_Layer: 0
-  m_Name: Drone
+  m_Name: Drone G0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,6 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecfaad86fe74454bf0a5d19abbd3660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groupId: 0
 --- !u!114 &2176103874326365344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,7 +211,7 @@ MonoBehaviour:
     x: 0
     y: 0
     z: 0
-  damping: 2
+  damping: 4
 --- !u!1 &8691181754725508755
 GameObject:
   m_ObjectHideFlags: 0

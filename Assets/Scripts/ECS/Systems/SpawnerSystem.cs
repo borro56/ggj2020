@@ -7,6 +7,7 @@ using Unity.Transforms;
 
 namespace ECS.Systems
 {
+    [DisableAutoCreation]
     public class SpawnerSystem : JobComponentSystem
     {
         private EndSimulationEntityCommandBufferSystem buffer;

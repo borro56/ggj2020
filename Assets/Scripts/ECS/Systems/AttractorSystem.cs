@@ -49,7 +49,8 @@ public abstract class BaseAttractorSystem : JobComponentSystem
             if (lengthSq > minDistance * minDistance) return;
 
             var dist = math.sqrt(lengthSq);
-            var forceCoef = 1 - dist / minDistance;
+            var distCoef = dist / minDistance;
+            var forceCoef = 1 - distCoef * distCoef;
             var dirToMouse = math.normalize(diff);
             vel.Value += dirToMouse * force * forceCoef * deltaTime;
 

@@ -35,7 +35,7 @@ namespace ECS.Systems
                         var spawnPosition = spawnerWorldPos + math.rotate(quatRotation, new float3(1,0,0)) * spawner.radius;
                         var direction = math.normalize(spawnerWorldPos - spawnPosition);
                         var damagerInstance = commandBuffer.Instantiate(0, spawner.prefab);
-
+                        
                         commandBuffer.SetComponent(0, damagerInstance, new Translation {Value = spawnPosition});
                         commandBuffer.SetComponent(0, damagerInstance, new DamagerDirection { Value = direction});
                         commandBuffer.AddComponent(0, damagerInstance, new DeathTimer()

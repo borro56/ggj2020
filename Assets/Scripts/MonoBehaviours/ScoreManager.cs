@@ -5,6 +5,11 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
+    public static ScoreManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     public float score;
     // Start is called before the first frame update
 

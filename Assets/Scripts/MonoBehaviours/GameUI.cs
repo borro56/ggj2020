@@ -19,7 +19,7 @@ public class GameUI : MonoBehaviour
 
     public void UpdateTimer(TimeSpan t)
     {
-        timer.text = string.Format("{0:00}:{1:00}", (int)t.TotalMinutes,(int)t.TotalSeconds);
+        timer.text = string.Format("{0}:{1}",t.Minutes.ToString("00"),t.Seconds.ToString("00"));
     }
 
     public void UpdateScore(int s)

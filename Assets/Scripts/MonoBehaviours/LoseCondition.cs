@@ -8,7 +8,8 @@ public class LoseCondition : MonoBehaviour
     float delay = 1;
     EntityQuery query;
     float time = -1;
-    [SerializeField] TextMeshProUGUI text;
+    [SerializeField] TextMeshProUGUI survivedText;
+    [SerializeField] TextMeshProUGUI scoreText;
     [SerializeField] GameObject resetButton;
     [SerializeField] AudioSource music;
     [SerializeField] AudioClip loseMusic;
@@ -24,13 +25,17 @@ public class LoseCondition : MonoBehaviour
     {
         delay -= Time.deltaTime;
         if(delay > 0) return;
-        
+
         if (!Won && query.CalculateEntityCount() <= 0)
         {
+            ScoreManager.Instance.enabled = false;
             music.clip = loseMusic;
             time = Time.timeSinceLevelLoad;
-            text.text = "You survived " + time.ToString("000") + " seconds";
-            text.gameObject.SetActive(true);
+            survivedText.text = "You survived " + time.ToString("000") + " seconds";
+            survivedText.gameObject.SetActive(true);
+
+            scoreText.text = "Your score: " + ScoreManager.Instance.score;
+            scoreText.gameObject.SetActive(true);
             //resetButton.SetActive(true);
         }
     }

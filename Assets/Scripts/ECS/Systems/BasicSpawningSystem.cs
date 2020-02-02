@@ -30,9 +30,6 @@ public class BasicSpawningSystem : JobComponentSystem
                 var deltaRate = spawner.finalRate - spawner.startRate;
                 var rate = spawner.startRate + deltaRate * math.min(1, time / spawner.rateTime);
                 
-                Debug.Log(time / spawner.rateTime);
-                
-                
                 var delta = time - spawner.lastSpawn;
                 if(delta < rate) return;
                 spawner.lastSpawn = time;

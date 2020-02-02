@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5497991362100241119}
   - component: {fileID: -2304399013799574360}
   - component: {fileID: 5736702693731816114}
+  - component: {fileID: 1262197486706027328}
   m_Layer: 0
   m_Name: Damager
   m_TagString: Untagged
@@ -148,3 +149,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 30
+--- !u!114 &1262197486706027328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255605702937034655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acc350923af044e0958dddcda2cea506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

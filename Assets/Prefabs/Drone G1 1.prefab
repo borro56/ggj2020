@@ -338,8 +338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebad3a72bf21414ea36ca01ffe5ccc94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amount: 25
-  maxAmount: 25
+  amount: 20
+  maxAmount: 20
 --- !u!114 &6594992548048620139
 MonoBehaviour:
   m_ObjectHideFlags: 0

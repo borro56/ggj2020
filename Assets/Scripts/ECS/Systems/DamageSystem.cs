@@ -7,6 +7,7 @@ using Unity.Mathematics;
 using Unity.Physics.Systems;
 using Unity.Rendering;
 using Unity.Transforms;
+using UnityEngine;
 
 namespace ECS.Systems
 {
@@ -59,6 +60,7 @@ namespace ECS.Systems
 
                     if (accumulatedDamage > 0)
                     {
+                        Debug.Log(life.amount - accumulatedDamage);
                         commandBuffer.SetComponent(0, e, new Life
                         {
                             amount =  math.max(life.amount - accumulatedDamage, 0),

@@ -449,6 +449,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2498210339165929122, guid: 28e54c1f61ac2496999fbafec347cfef,
+        type: 3}
+      propertyPath: speed
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2498210339165929123, guid: 28e54c1f61ac2496999fbafec347cfef,
+        type: 3}
+      propertyPath: DamagersOverTime
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 2498210339165929125, guid: 28e54c1f61ac2496999fbafec347cfef,
         type: 3}
       propertyPath: m_Name

@@ -30,6 +30,7 @@ public class LoseCondition : MonoBehaviour
         {
             ScoreManager.Instance.enabled = false;
             music.clip = loseMusic;
+            music.Play();
             time = Time.timeSinceLevelLoad;
             survivedText.text = "You survived " + time.ToString("000") + " seconds";
             survivedText.gameObject.SetActive(true);

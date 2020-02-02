@@ -44,14 +44,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1255605702937034655, guid: f5d8ffd469fee074ba29435e2c236719, type: 3}
-  startRate: 0.05
+  startRate: 0.01
   finalRate: 0.0025
-  rateTime: 120
+  rateTime: 240
   areaSize:
-    x: 80
+    x: 100
     y: 0
     z: 0
   global: 1
   setRotation: 1
   amount: -1
+  amountPerFrame: 1
   lastSpawn: 0

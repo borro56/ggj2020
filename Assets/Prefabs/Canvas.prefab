@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5630151171444158718
 RectTransform:
   m_ObjectHideFlags: 0
@@ -271,8 +271,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfe8add96435c5041b7870fd1e03f2bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  survivedText: {fileID: 0}
-  scoreText: {fileID: 0}
+  survivedText: {fileID: 5630151172613878598}
+  scoreText: {fileID: 5630151171444158717}
   resetButton: {fileID: 5630151173042005045}
   music: {fileID: 0}
   loseMusic: {fileID: 8300000, guid: 32dc3b1db1e1a83449fbe7e0a8c07d22, type: 3}
@@ -370,7 +370,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5630151172613878596
 RectTransform:
   m_ObjectHideFlags: 0

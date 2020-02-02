@@ -11,9 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/game.unity
     guid: 151ce7c2c3652194f9c0a43d02e3e496
-  - enabled: 1
-    path: Assets/Scenes/Subscenes/dots.unity
-    guid: f4696decac99b0646a149881804deaef
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 4e6e73ec2ac2c14428054da085ad6018,
       type: 2}

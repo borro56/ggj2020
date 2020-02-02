@@ -49,6 +49,7 @@ namespace ECS.Systems
                         if (bounds.Value.Contains(position))
                         {
                             accumulatedDamage += damage;
+                            
                             commandBuffer.DestroyEntity(0, dangerEntities[i]);
                         }
                     }

@@ -7,11 +7,11 @@ using UnityEngine.Video;
 
 public class BasicSpawningSystem : JobComponentSystem
 {
-    EndSimulationEntityCommandBufferSystem buffer;
+    BeginSimulationEntityCommandBufferSystem buffer;
 
     protected override void OnCreate()
     {
-        buffer = World.GetOrCreateSystem<EndSimulationEntityCommandBufferSystem>();
+        buffer = World.GetOrCreateSystem<BeginSimulationEntityCommandBufferSystem>();
         base.OnCreate();
     }
     

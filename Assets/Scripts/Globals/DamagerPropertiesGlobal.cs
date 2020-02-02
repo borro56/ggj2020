@@ -19,9 +19,9 @@ namespace Globals
 
         void Start()
         { 
-            var world = World.DefaultGameObjectInjectionWorld;
-            var settings = GameObjectConversionSettings.FromWorld(world, new BlobAssetStore());
-            EntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(prefab, settings);
+           /*var world = World.DefaultGameObjectInjectionWorld;
+            var settings = GameObjectConversionSettings.FromWorld(world, new BlobAssetStore());*/
+            //EntityPrefab = GameObjectConversionUtility.ConvertGameObjectHierarchy(prefab, World.Active);
         }
     }
 }

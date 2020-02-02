@@ -28,7 +28,7 @@ namespace ECS.Systems
 
         protected override JobHandle OnUpdate(JobHandle inputDeps)
         {
-            var prefab = DamagerPropertiesGlobal.Instance.EntityPrefab;
+            var prefab = GetSingleton<ExplosionPrefab>().prefab; //DamagerPropertiesGlobal.Instance.EntityPrefab;
             var damage = DamagerPropertiesGlobal.Instance.damage;
             var commandBuffer = _buffer.CreateCommandBuffer().ToConcurrent();
             var dangerEntities = _dangerEntities.ToEntityArray(Allocator.TempJob);

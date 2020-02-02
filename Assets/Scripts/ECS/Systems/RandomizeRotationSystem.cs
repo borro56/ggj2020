@@ -7,7 +7,7 @@ public class RandomizeRotationSystem : JobComponentSystem
 {
     protected override JobHandle OnUpdate(JobHandle inputDeps)
     {
-        var time = (float)Time.ElapsedTime;
+        var time = UnityEngine.Time.realtimeSinceStartup;
         return Entities.ForEach((ref Rotation rot, ref RandomizeRotation rndRot) =>
         {
             var deltaRate = rndRot.finalRate - rndRot.startRate;

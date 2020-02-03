@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 3865739378922765971}
   - component: {fileID: 8723421388877244195}
   - component: {fileID: 6542050920768389108}
+  - component: {fileID: 3051081259557949005}
   m_Layer: 0
   m_Name: Drone G0
   m_TagString: Untagged
@@ -248,6 +249,18 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &3051081259557949005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5165491638636741995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66fc287f339b4a78abeb38f7c44971fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8118160389938392955
 GameObject:
   m_ObjectHideFlags: 0

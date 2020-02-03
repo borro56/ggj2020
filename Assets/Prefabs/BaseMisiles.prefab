@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5497991362100241119}
   - component: {fileID: -2304399013799574360}
   - component: {fileID: 7769221545417939106}
-  - component: {fileID: 5293988870758262327}
   - component: {fileID: -1127082205581123991}
+  - component: {fileID: -3715944054989762135}
   m_Layer: 0
   m_Name: BaseMisiles
   m_TagString: Untagged
@@ -137,18 +137,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 100
---- !u!114 &5293988870758262327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1255605702937034655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 465bb1433864476f80c281e5480750e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &-1127082205581123991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,3 +154,17 @@ MonoBehaviour:
     y: 0
     z: 0
   damping: 0
+--- !u!114 &-3715944054989762135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1255605702937034655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a3b2f3933ee4eeb8859240f8f04fae1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeWhenDeathTimerStarted: 0
+  timeUntilObjectIsDestroyed: 3

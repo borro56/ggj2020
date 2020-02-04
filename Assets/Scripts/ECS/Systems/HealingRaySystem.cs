@@ -1,3 +1,4 @@
+using ECS.Systems;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
@@ -5,6 +6,11 @@ using Unity.Rendering;
 using Unity.Transforms;
 using UnityEngine;
 
+[UpdateAfter(typeof(HealerTargetingSystem))]
+[UpdateBefore(typeof(DamageSystem))]
+[UpdateBefore(typeof(DestroyIfNoParentSystem))]
+[UpdateBefore(typeof(RemoveDeadSystem))]
+[UpdateBefore(typeof(UnspawnSystem))]
 public class HealingRaySystem : JobComponentSystem
 { 
     protected override JobHandle OnUpdate(JobHandle inputDeps)

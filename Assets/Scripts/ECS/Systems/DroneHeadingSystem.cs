@@ -6,6 +6,11 @@ using Unity.Transforms;
 
 namespace ECS.Systems
 {
+	[UpdateAfter(typeof(HealerTargetingSystem))]
+	[UpdateBefore(typeof(DamageSystem))]
+	[UpdateBefore(typeof(DestroyIfNoParentSystem))]
+	[UpdateBefore(typeof(RemoveDeadSystem))]
+	[UpdateBefore(typeof(UnspawnSystem))]
     public class DroneHeadingSystem : JobComponentSystem
     {
         protected override JobHandle OnUpdate(JobHandle inputDeps)

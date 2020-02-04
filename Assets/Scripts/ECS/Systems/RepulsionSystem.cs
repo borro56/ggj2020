@@ -4,6 +4,10 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
 
+[UpdateBefore(typeof(DamageSystem))]
+[UpdateBefore(typeof(DestroyIfNoParentSystem))]
+[UpdateBefore(typeof(RemoveDeadSystem))]
+[UpdateBefore(typeof(UnspawnSystem))]
 public class RepulsionSystem : JobComponentSystem
 {
     EntityQuery targetEntities;

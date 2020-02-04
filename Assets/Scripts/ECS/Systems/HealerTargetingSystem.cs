@@ -8,6 +8,11 @@ using UnityEngine;
 
 namespace ECS.Systems
 {
+	[UpdateBefore(typeof(HealingRaySystem))]
+	[UpdateBefore(typeof(DamageSystem))]
+	[UpdateBefore(typeof(DestroyIfNoParentSystem))]
+	[UpdateBefore(typeof(RemoveDeadSystem))]
+	[UpdateBefore(typeof(UnspawnSystem))]
     public class HealerTargetingSystem : JobComponentSystem
     {
         private EntityQuery _targetEntities;

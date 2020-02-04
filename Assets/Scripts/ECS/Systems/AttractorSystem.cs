@@ -1,4 +1,5 @@
-﻿using Unity.Entities;
+﻿using ECS.Systems;
+using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
@@ -18,6 +19,10 @@ public class Group2AttractorSystem : BaseAttractorSystem
     public override ButtonControl Button => Mouse.current.rightButton;
 }
 
+[UpdateBefore(typeof(DamageSystem))]
+[UpdateBefore(typeof(DestroyIfNoParentSystem))]
+[UpdateBefore(typeof(RemoveDeadSystem))]
+[UpdateBefore(typeof(UnspawnSystem))]
 public abstract class BaseAttractorSystem : JobComponentSystem
 {
     public abstract int TargetGroup { get; }
